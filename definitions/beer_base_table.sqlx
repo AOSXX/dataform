@@ -1,0 +1,17 @@
+config {
+    type: "table", // Creates a view in BigQuery. Try changing to "table" instead.
+    columns: {
+        product_code: "Code of product",
+        date_and_time_of_unloading: "timedate",
+        name: "name of the factory",
+        amount: "value that has been bought",
+        country_of_origin: "country where it came from",
+        size: "full size",
+        base_unit: "unit of the product"
+    }
+}
+
+SELECT
+  *
+FROM
+  `dateengineerbootcamp.dbt_beer_dbt.beers_staging`
