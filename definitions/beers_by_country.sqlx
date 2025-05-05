@@ -1,0 +1,17 @@
+config {
+    type: "view"
+}
+
+  -- Use the ref() function to manage dependencies.
+  -- Learn more about ref() and other built in functions here: https://cloud.google.com/dataform/docs/dataform-core
+SELECT
+  country_of_origin,
+  SUM(CAST(amount AS float64)) AS total_amount
+FROM
+  ${ref("beer_base_table")}
+GROUP BY
+  country_of_origin
+HAVING
+  country_of_origin IS NOT NULL
+ORDER BY
+  total_amount DESC
